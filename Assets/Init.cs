@@ -9,6 +9,7 @@ public class Init : MonoBehaviour {
 	public GameObject original;
 	public GameObject auxiliar;
 	public GameObject final;
+	public Material[] colores;
 	private float radio = 2.6f;
 	private float posO = 0.2f;
 	private float posA = 0.2f;
@@ -16,14 +17,21 @@ public class Init : MonoBehaviour {
 	public static Stack<GameObject> Origen = new Stack<GameObject>();
 	public static Stack<GameObject> Aux = new Stack<GameObject>();
 	public static Stack<GameObject> Destino = new Stack<GameObject>();
+	List<Material> lista;
 	// Use this for initialization
 	void Start () {
+		lista = new List<Material> (colores);
 		for (int i = 0; i < Discos; i++) {
-			disk = Instantiate(disco, new Vector3(original.GetComponent<Transform>().position.x, posO, original.GetComponent<Transform>().position.z), Quaternion.identity) as GameObject;
-			disk.GetComponent<Disco>().SetRadio(this.radio);
-			posO = posO + 0.1f;
-			radio = radio - 0.2f;
-			Origen.Push(disk);
+			while (lista.Count>0) {
+				disk = Instantiate(disco, new Vector3(original.GetComponent<Transform>().position.x, posO, original.GetComponent<Transform>().position.z), Quaternion.identity) as GameObject;
+				disk.GetComponent<Disco>().SetRadio(this.radio);
+				int x= Random.Range(0,lista.Count-1);
+				disk.GetComponent<Disco>().setMaterial(lista[x]);
+				posO = posO + 0.1f;
+				radio = radio - 0.2f;
+				Origen.Push(disk);
+				lista.RemoveAt(x);
+			}
 		}
 	}
 	
