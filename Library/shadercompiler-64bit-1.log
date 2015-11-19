@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-Base path: C:/Program Files/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-3480
-=======
 Base path: H:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-7952
->>>>>>> Programadas iteraciones, falta perfeccionar animaciones
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-5016
 Cmd: getPlatforms
